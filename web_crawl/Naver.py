@@ -1,6 +1,7 @@
 import requests
 from urllib.parse import urlparse
 from web_crawl.BlogCrawling import Naver
+from web_crawl.function import make_sentence
 
 page_list = []
 
@@ -13,15 +14,18 @@ def get_api_result(keyword, display, start):
     return result.json()
 
 def call_and_print(keyword, page):
-    json_obj = get_api_result(keyword, 30, page)
+    json_obj = get_api_result(keyword, 1, page)
     for item in json_obj['items']:
         title = item['title'].replace("<b>", "").replace("</b>", "").replace("&lt;", "").replace("&gt;", "").replace("&quot;","")
         link = item['link']
         result = (title, link)
         page_list.append(result)
 
+list = []
 input = input('검색할 단어 > ')
 call_and_print(input, 1)
 for link in page_list:
-    print(link[0])
-    Naver(link[1])
+    # print(link[0])
+    list.append(Naver(link[1]))
+
+make_sentence(list)

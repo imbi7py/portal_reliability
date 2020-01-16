@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from konlpy.tag import Twitter
 from collections import Counter
-# from wordcloud import WordCloud
+from wordcloud import WordCloud
 import wordcloud
 import matplotlib.pyplot as plt
  
@@ -65,9 +65,9 @@ def make_wordcloud(word_count):
     # 한글깨지는 문제 해결하기위해 font_path 지정
     # https://amueller.github.io/word_cloud/
     # https://github.com/amueller/word_cloud
-    wc = wordcloud.WordCloud(font_path='/Library/Fonts/NanumSquareLight.ttf', background_color='white', width=800, height=600)
+    wordcloud = WordCloud(font_path='/Library/Fonts/NanumSquareLight.ttf', background_color='white', width=800, height=600)
     print(dict(tags))
-    cloud = wc.generate_from_frequencies(dict(tags))
+    cloud = wordcloud.generate_from_frequencies(dict(tags))
     plt.figure(figsize=(10, 8))
     plt.axis('off')
     plt.imshow(cloud)
