@@ -31,13 +31,13 @@
 1. python 가상환경 venv 생성 및 활성화
 ```
 # python 가상환경 venv 로 만들기
-python -m venv C:\Study\project_idol\venv
+python -m venv \path\to\venv
 
 # python 가상환경 venv 실행하기
-C:\Study\project_idol\venv\Scripts\activate.bat
+\path\to\venv\Scripts\activate.bat
 
 # python 가상환경 venv 비활성화 하기
-C:\Study\project_idol\venv\Scripts\deactivate.bat
+\path\to\venv\Scripts\deactivate.bat
 ```
 2. pip 설치 및 의존성 패키지 requirements.txt 생성
 ```
