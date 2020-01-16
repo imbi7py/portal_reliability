@@ -16,6 +16,6 @@ scikit-learn
 cryptography
 beautifulsoup4
 lxml
-# eunjeon  -> konlpy 로 대체 (그전에 jPype 설치해야 함)
+# eunjeon  -> konlpy �� ��ü (������ jPype ��ġ�ؾ� ��)
 wordcloud
 exifread
