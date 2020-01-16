@@ -29,5 +29,7 @@ urlpatterns = [
 
     path('', HomeView.as_view(), name='home'),  # 홈 뷰 추가
     path('chart/', include('chart.urls',), name='chart'),
-    path('ranking/', include('ranking.urls',), name='ranking'),
+    path('portal/', include('portal.urls',), name='portal'),
+    path('word/', include('word.urls',), name='word'),
+    # path('ranking/', include('ranking.urls',), name='ranking'),
 ]

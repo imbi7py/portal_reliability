@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% block title %}Django Web Programming{% endblock %}</title>
+    <title>{% block title %}Portal 콘텐츠 신뢰도 조사{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     {% load static %}
@@ -17,15 +17,16 @@
 <body>
 
     <div id="header">
-        <h2 class="maintitle">IDOL 랭킹 예측</h2>
+        <h2 class="maintitle">Portal 콘텐츠 신뢰도 조사</h2>
         
     </div>
 
     <div id="menu">
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'chart:index' %}">Chart</a></li>
-            <li><a href="{% url 'ranking:index' %}">Ranking</a></li>
+            {% comment %} <li><a href="{% url 'chart:index' %}">Chart</a></li> {% endcomment %}
+            <li><a href="{% url 'portal:index' %}">키워드 광고성지수 검색</a></li>
+            <li><a href="{% url 'word:index' %}">키워드별 광고성지수 워드크라우드</a></li>
         </ul>
     </div>
 

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chart.apps.ChartConfig',
     'ranking.apps.RankingConfig',
+    'portal.apps.PortalConfig',
+    'word.apps.WordConfig',
 ]
 
 MIDDLEWARE = [
