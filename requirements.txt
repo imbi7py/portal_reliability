@@ -18,5 +18,4 @@ beautifulsoup4
 lxml
 # eunjeon  -> konlpy �� ��ü (������ jPype ��ġ�ؾ� ��)
 wordcloud
-requests
-konlpy
+exifread
