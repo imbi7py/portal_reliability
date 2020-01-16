@@ -50,6 +50,12 @@ pip install -r requirements.txt
 # (참고) pip 으로 의존성 패키지 리스트 목록화 하기
 pip freeze > requirements.txt
 
+********* Konlpy 를 형태소 분석 패키지로 사용함. 설치하기 전에 jpype가 먼저 설치돼야 함
+파이썬 버전에 맞는 파일을 설치해야 함. 아래는 3.7 기준. 
+1. pip install JPype1-0.7.1-cp37-cp37m-win_amd64.whl
+2. pip install konlpy
+
+
 #**** 프로젝트 파일의 실행경로가 달라지는 경우 venv/Scripts/activate.bat 파일 수정
 # 11라인에서 수정 --> set "VIRTUAL_ENV=C:\Study\project_idol\venv"
 ```
@@ -155,3 +161,19 @@ python manage.py migrate
 python manage.py runserver
 ```
 ----
+
+## 장고 템플릿 내장 필터 :
+https://himanmengit.github.io/django/2018/02/23/Built-In-Template-Filter.html
+
+---
+
+## 최종 결과 화면 구성 (django)
+
+1. 키워드 검색 및 결과 : 
+- 입력 및 검색 결과 : 검색할 키워드 창 화면에서 입력(프론트) -> 스크래핑 진행, 요소 카운트, 판정 결과 % 화(서버) 키워드 및 광고지수 리스트를 DB(result)에 저장 -> django 결과화면에 리스트와 광고 지수 출력 (프론트)
+- 추후 광고지수에 영향을 미치는 팩터를 DB화 하고 사용자 또는 관리자가 광고 여부를 딥러닝 학습을 시켜서 예측 모델 작성 가능
+
+2. DB에서 결과를 가져와 워드 클라우드로 결과 화면
+- 키워드별로 DB에 저장된 광고 지수 결과에서 90% 이상 광고 추정한 결과의 갯수를 키워드, 결과 갯수를 쌍으로 딕셔너리로 가져옴.
+- 프론트에서 워드클라우드 출력
+
