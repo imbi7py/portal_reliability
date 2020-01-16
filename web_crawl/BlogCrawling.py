@@ -1,6 +1,7 @@
 import bs4
 from selenium import webdriver
 from datetime import datetime
+import lxml
 
 
 options = webdriver.ChromeOptions()
@@ -94,15 +95,3 @@ def Naver(url):
         print(img_count)
         print(vdo_count)
         print(content_list)
-
-# Naver()
-start_time = datetime.now()
-url1 = 'https://blog.naver.com/skcmi/221436159512/'
-Naver(url1)
-url2 = 'https://blog.naver.com/kmw123m/221364161554'
-Naver(url2)
-url3 = 'https://blog.naver.com/skcmi/221767496118'
-Naver(url3)
-url4 = 'https://blog.naver.com/hee___seon/221290947682'
-Naver(url4)
-print("time : ", datetime.now() - start_time)
