@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView, TemplateView, FormView
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView
 from django.views.generic.dates import DayArchiveView, TodayArchiveView
 
-from .models import Ranking
+# from .models import Ranking
 from django.db.models import Q
 from django.shortcuts import render
 
@@ -18,10 +18,10 @@ from django_app.views import LoginRequiredMixin
 #     context_object_name = 'posts'  # 메타에서 사용. tamplates 에서 이름 사용 / object list 대신 사용 가능
 
 
-def index(request):    
-    ranking_list = Chart.objects.select_related('idol').filter(chart_date=int(recent_date_n)).order_by('-chart_total')[:10]  # 테이블 조인해서 chart_date 로 where 
-    context = {'ranking_list': ranking_list}
-    return render(request, 'chart/index.html', context)
+# def index(request):    
+#     ranking_list = Chart.objects.select_related('idol').filter(chart_date=int(recent_date_n)).order_by('-chart_total')[:10]  # 테이블 조인해서 chart_date 로 where 
+#     context = {'ranking_list': ranking_list}
+#     return render(request, 'chart/index.html', context)
 
 # class ChartTV(TemplateView):
 #     model = Chart

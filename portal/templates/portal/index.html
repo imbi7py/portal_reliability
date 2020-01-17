@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Portal 검색어 광고지수 평가{% endblock %}
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+
+    #title{
+        margin-top:130px;
+        margin-bottom:30px;
+        text-align:center;
+    }
+
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        margin:5px;
+    }
+
+    #myChart{
+        width:50%;
+        max-width:1200px;
+        margin:20px auto;
+    }
+
+    </style>
+{% endblock %}
+{% block extrascript %}
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
+{% endblock %}
+
+{% block content %}
+<body>
+    <h2 id="title"> 포털 광고 지수 </h2>
+
+    {% if label_list %}
+        <ul>
+        {% for item in label_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Data</p>
+    {% endif %}
+
+    <form action="{% url 'portal:result' %}" method="post">
+    {% csrf_token %}
+    <label for="keyword">검색어 입력</label>
+    <input type="text" name="keyword" id="keyword" value="">
+    <input type="submit" value="검색">
+    </form>
+
+    <br>
+    <br>
+
+
+{% endblock content %}
+
+{% block footer %}
+    <div id="footer">&copy; Django for Python 2019.</div>
+{% endblock %}

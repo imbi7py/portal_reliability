@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Portal 워드크라우드{% endblock %}
+{% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+
+    #title{
+        margin-top:130px;
+        margin-bottom:30px;
+        text-align:center;
+    }
+
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        margin:5px;
+    }
+
+    #myChart{
+        width:50%;
+        max-width:1200px;
+        margin:20px auto;
+    }
+
+    </style>
+{% endblock %}
+{% block extrascript %}
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
+{% endblock %}
+
+{% block content %}
+<body>
+    <h2 id="title">키워드별 광고성지수 워드크라우드</h2>
+
+    <p style="text-align:center">
+        {% load static %}
+        <img src="{% static 'img/datarank.png' %}" alt="wordcloud 샘플">
+    </p>
+
+    {% if label_list %}
+        <ul>
+        {% for item in label_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Data</p>
+    {% endif %}
+
+   
+    <br>
+    <br>
+
+
+{% endblock content %}
+
+{% block footer %}
+    <div id="footer">&copy; Django for Python 2019.</div>
+{% endblock %}
