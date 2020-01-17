@@ -11,17 +11,8 @@
         text-align:center;
     }
 
-    canvas{
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        margin:5px;
-    }
-
-    #myChart{
-        width:50%;
-        max-width:1200px;
-        margin:20px auto;
+     .search, h2{
+        text-align:left;
     }
 
     </style>
@@ -39,17 +30,42 @@
         <p>No Data</p>
     {% endif %}
 
+<div class = "search">
     <form action="{% url 'portal:result' %}" method="post">
     {% csrf_token %}
     <label for="keyword">검색어 입력</label>
     <input type="text" name="keyword" id="keyword" value="">
     <input type="submit" value="검색">
     </form>
+</div>
 
     <br>
     <br>
-
-
+    
+    <table>
+    {% for key in keyword %} 
+        <tr>
+            <td width="60%">    
+                <a href = "blog url">
+                    <strong class = "post_title">블로그 제목</strong>
+                </a>
+            </td>
+            <td rowspan = "2" width="20%">
+                <a>워드클라우드</a>
+            </td>
+            <td rowspan = "2" width="20%">
+                <a>정확도</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href = "blog url">
+                    내용
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
 {% endblock content %}
 
 {% block footer %}
