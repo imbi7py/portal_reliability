@@ -3,9 +3,9 @@
 import exifread
 import os,sys
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Open image file for reading (binary mode)
-path_name = os.path.join(BASE_DIR, 'analyze/01.jpg')
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# # Open image file for reading (binary mode)
+path_name = 'https://postfiles.pstatic.net/MjAyMDAxMDZfMTg3/MDAxNTc4Mjk1NTc0ODE2.CKcCZDx7HOZmHoToXuaqnJ6UU1yjx2IwvQtDaNnMgKwg.gRphPjFExbEPQcT5iDBlRUBpfKxD9ux2AAf60pOkXhcg.JPEG.imdressholic/20200105_161110.jpg?type=w966'
 
 def process_image(filename):
     # Open image file for reading (binary mode)

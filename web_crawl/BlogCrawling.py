@@ -35,7 +35,7 @@ def Naver(url):
             if li.text != '\u200b':
                 content_list.append(li.text)  # 빈 리스트에 li의 텍스트를 반복문으로 이어 붙이기
 
-        content_str = ". ".join(content_list)
+        content_str = "*".join(content_list)
         imoti_count = str(lis2).count("img")
         img_count = str(image).count("img")
         video_count = str(canvas).count("se-component se-video se-l-default")
@@ -43,6 +43,7 @@ def Naver(url):
         # print(img_count)
         # print(video_count)
         # print(content_str)
+        # print(type(content_str))
         result = imoti_count, img_count, video_count, content_str
         return result
 
@@ -56,10 +57,9 @@ def Naver(url):
         content_list = [] #문자를 넣어주기 위한 리스트
 
         for li in lis:  # \u200b 제거후 텍스트 추출
-
             content_list.append(str(li.text.replace("\xa0", ""))) #빈 리스트에 li의 텍스트를 반복문으로 이어 붙이기
 
-        content_str = ". ".join(content_list)
+        content_str = "*".join(content_list)
         imoti_count = str(lis2).count("스티커 이미지")
         img_count = str(image).count("imgId")
         video_count = str(canvas).count("_video_thumb")
@@ -67,10 +67,10 @@ def Naver(url):
         # print(img_count)
         # print(video_count)
         # print(content_str)
+        # print(type(content_str))
         result = imoti_count, img_count, video_count, content_str
         return result
     else:
-
         ul = bs_obj.find("div", {"id": "postViewArea"})
 
         content_list = []
@@ -91,13 +91,14 @@ def Naver(url):
 
         canvas = ul.findAll("div", {"class": "_video_thumb"})  # 동영상 추출
 
-        content_str = ". ".join(content_list)
+        content_str = "*".join(content_list)
         imoti_count = str(lis2).count("type=p50_50")
         img_count = str(image).count("img")
         video_count = str(canvas).count("_video_thumb")
         # print(imoti_count)
         # print(img_count)
-        # print(vdo_count)
-        # print(content_list)
+        # print(video_count)
+        # print(content_str)
+        # print(type(content_str))
         result = imoti_count, img_count, video_count, content_str
         return result
