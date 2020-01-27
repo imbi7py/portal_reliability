@@ -19,3 +19,5 @@ lxml
 # eunjeon  -> konlpy �� ��ü (������ jPype ��ġ�ؾ� ��)
 wordcloud
 exifread
+nltk
+networkx

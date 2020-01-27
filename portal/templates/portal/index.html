@@ -11,17 +11,8 @@
         text-align:center;
     }
 
-    canvas{
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        margin:5px;
-    }
-
-    #myChart{
-        width:50%;
-        max-width:1200px;
-        margin:20px auto;
+    .search{
+        text-align:center;
     }
 
     </style>
@@ -34,7 +25,7 @@
 <body>
     <h2 id="title"> 포털 광고 지수 </h2>
 
-    {% if label_list %}
+    {% comment %} {% if label_list %}
         <ul>
         {% for item in label_list %}
             <li>{{ item }}</li>
@@ -42,21 +33,21 @@
         </ul>
     {% else %}
         <p>No Data</p>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
+<div class = "search">
     <form action="{% url 'portal:result' %}" method="post">
     {% csrf_token %}
     <label for="keyword">검색어 입력</label>
     <input type="text" name="keyword" id="keyword" value="">
     <input type="submit" value="검색">
     </form>
-
+</div>
     <br>
     <br>
-
 
 {% endblock content %}
-
+<!--############-->
 {% block footer %}
     <div id="footer">&copy; Django for Python 2019.</div>
 {% endblock %}

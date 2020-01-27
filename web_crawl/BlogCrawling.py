@@ -1,16 +1,15 @@
 import bs4
 from selenium import webdriver
-from datetime import datetime
-import lxml
-
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless') # 팝업창 안띄우는 속성
 
 options.add_argument("disable-gpu")
-driver = webdriver.Chrome('chromedriver', chrome_options=options)
+
+
 
 def Naver(url):
+    driver = webdriver.Chrome('chromedriver', chrome_options=options)
     driver.get(url)  # se-main-container 속성 블로그
     driver.implicitly_wait(3)
     driver.switch_to.frame('mainFrame')
@@ -20,7 +19,8 @@ def Naver(url):
     ul = bs_obj.find("div", {"class":"se-main-container"})
     ul1 = bs_obj.find("div", {"class": "se_component_wrap sect_dsc __se_component_area"})
 
-    if ul!=None:
+    driver.quit()
+    if ul:
         ul = bs_obj.find("div", {"class": "se-main-container"})  # 본문 영역 가져오기
 
         # lis= str(ul.findAll("p"))
@@ -33,9 +33,9 @@ def Naver(url):
 
         for li in lis:  # \u200b 제거후 텍스트 추출
             if li.text != '\u200b':
-                content_list.append(li.text)  # 빈 리스트에 li의 텍스트를 반복문으로 이어 붙이기
+                content_list.append(li.text.replace("\xa0", "").replace("\u200b","").strip())  # 빈 리스트에 li의 텍스트를 반복문으로 이어 붙이기
 
-        content_str = ". ".join(content_list)
+        content_str = " ".join(content_list)
         imoti_count = str(lis2).count("img")
         img_count = str(image).count("img")
         video_count = str(canvas).count("se-component se-video se-l-default")
@@ -43,10 +43,11 @@ def Naver(url):
         # print(img_count)
         # print(video_count)
         # print(content_str)
+        # print(type(content_str))
         result = imoti_count, img_count, video_count, content_str
         return result
 
-    elif ul1 !=None:
+    elif ul1:
         ul = bs_obj.find("div", {"class":"se_component_wrap sect_dsc __se_component_area"}) # 본문 영역 가져오기
         image = ul.findAll("div", {"class": "se_component se_image default"}) #이미지 추출
         lis2 = ul.findAll("img", {"class": "__se_img_el"}) #이모티콘 추출
@@ -56,10 +57,9 @@ def Naver(url):
         content_list = [] #문자를 넣어주기 위한 리스트
 
         for li in lis:  # \u200b 제거후 텍스트 추출
+            content_list.append(str(li.text.replace("\xa0", "").replace("\u200b","").strip())) #빈 리스트에 li의 텍스트를 반복문으로 이어 붙이기
 
-            content_list.append(str(li.text.replace("\xa0", ""))) #빈 리스트에 li의 텍스트를 반복문으로 이어 붙이기
-
-        content_str = ". ".join(content_list)
+        content_str = " ".join(content_list)
         imoti_count = str(lis2).count("스티커 이미지")
         img_count = str(image).count("imgId")
         video_count = str(canvas).count("_video_thumb")
@@ -67,22 +67,26 @@ def Naver(url):
         # print(img_count)
         # print(video_count)
         # print(content_str)
+        # print(type(content_str))
         result = imoti_count, img_count, video_count, content_str
         return result
-    else:
 
+    else:
         ul = bs_obj.find("div", {"id": "postViewArea"})
 
         content_list = []
-        content1 = ul.findAll("div")
-        content2 = ul.findAll("p")
-
-        if content1 == None:
-            for content in content2:
-                content_list.append(content.text)
-        else:
-            for content in content1:
-                content_list.append(content.text)
+        # content1 = ul.findAll("div")
+        # content2 = ul.findAll("p")
+        #
+        # if content1 == None:
+        #     for content in content2:
+        #         content_list.append(content.text)
+        # else:
+        #     for content in content1:
+        #         content_list.append(content.text)
+        contents = ul.findAll("p")
+        for content in contents:
+            content_list.append(content.text.replace("\xa0", "").replace("\u200b","").strip())
 
 
         lis2 = ul.findAll("img")
@@ -91,13 +95,15 @@ def Naver(url):
 
         canvas = ul.findAll("div", {"class": "_video_thumb"})  # 동영상 추출
 
-        content_str = ". ".join(content_list)
+        content_str = " ".join(content_list)
         imoti_count = str(lis2).count("type=p50_50")
         img_count = str(image).count("img")
         video_count = str(canvas).count("_video_thumb")
         # print(imoti_count)
         # print(img_count)
-        # print(vdo_count)
-        # print(content_list)
+        # print(video_count)
+        # # print(content_list)
+        # print(content_str)
+        # print(type(content_str))
         result = imoti_count, img_count, video_count, content_str
         return result

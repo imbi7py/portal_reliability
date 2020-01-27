@@ -43,8 +43,6 @@ def result(request):
     context = {'keyword': keyword}
 
     # 처리 로직은 여기에
-
-
     return render(request, 'portal/result.html', context)
 
     '''
